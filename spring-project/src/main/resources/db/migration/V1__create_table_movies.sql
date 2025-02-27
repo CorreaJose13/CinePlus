@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS Movies (
+    Movie_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Title VARCHAR(100) NOT NULL,
+    Synopsis TEXT,
+    Duration INT NOT NULL,
+    Genre VARCHAR(50) NOT NULL,
+    Image_URL VARCHAR(255),
+    Status VARCHAR(20) NOT NULL
+);
