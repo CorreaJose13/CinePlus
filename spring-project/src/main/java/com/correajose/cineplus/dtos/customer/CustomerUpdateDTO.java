@@ -1,6 +1,7 @@
 package com.correajose.cineplus.dtos.customer;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,8 @@ public class CustomerUpdateDTO {
     private String lastName;
 
     @NotBlank(message = "Phone cannot be empty")
-    /* Añadir patron telefono*/
     private String phone;
+
+    @NotNull(message = "Enabled cannot be null")
+    private boolean enabled;
 }
