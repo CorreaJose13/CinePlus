@@ -32,4 +32,8 @@ public class Customer {
 
     @Column(name="enabled")
     private boolean enabled;
+
+    @Column(name="role")
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }

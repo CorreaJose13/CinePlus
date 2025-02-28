@@ -43,11 +43,6 @@ public class CustomerController implements ICrudController<CustomerCreateDTO,Cus
         return buildOkResponse(HttpStatus.OK, customerService.update(id,body), "Customer updated successfully");
     }
 
-    @PutMapping("/toggleStatus/{id}")
-    public ResponseEntity<?> toggleStatus(int id) {
-        return buildOkResponse(HttpStatus.OK, customerService.toggleStatus(id), "Status changed successfully");
-    }
-
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(int id) {
         return buildOkResponse(HttpStatus.NO_CONTENT, customerService.delete(id), "Customer deleted successfully");

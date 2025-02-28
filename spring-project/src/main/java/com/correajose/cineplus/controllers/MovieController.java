@@ -43,11 +43,6 @@ public class MovieController implements ICrudController<MovieCreateDTO, MovieUpd
         return buildOkResponse(HttpStatus.OK, movieService.update(id,body), "Movie updated successfully");
     }
 
-    @PutMapping("/toggleStatus/{id}")
-    public ResponseEntity<?> toggleStatus(int id) {
-        return buildOkResponse(HttpStatus.OK, movieService.toggleStatus(id), "Status changed successfully");
-    }
-
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(int id) {
         return buildOkResponse(HttpStatus.NO_CONTENT, movieService.delete(id), "Movie deleted successfully");

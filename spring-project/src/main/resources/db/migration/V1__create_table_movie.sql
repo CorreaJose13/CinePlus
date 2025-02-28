@@ -5,5 +5,6 @@ CREATE TABLE IF NOT EXISTS movie (
     duration INT NOT NULL,
     genre VARCHAR(50) NOT NULL,
     image_url VARCHAR(255),
+    release_date DATE NOT NULL,
     enabled BOOLEAN NOT NULL
 );

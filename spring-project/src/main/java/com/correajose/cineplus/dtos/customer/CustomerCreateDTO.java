@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +18,6 @@ public class CustomerCreateDTO {
     private String lastName;
 
     @NotBlank(message = "Phone cannot be empty")
-    /* Añadir patron telefono*/
     private String phone;
 
     @NotBlank(message = "Email cannot be empty")

@@ -1,5 +1,6 @@
 package com.correajose.cineplus.dtos.customer;
 
+import com.correajose.cineplus.models.customer.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,4 +15,5 @@ public class CustomerResponseDTO {
     private String phone;
     private String email;
     private boolean enabled;
+    private Role role;
 }
