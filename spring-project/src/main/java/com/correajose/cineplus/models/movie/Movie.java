@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,6 +31,9 @@ public class Movie {
 
     @Column(name="image_url")
     private String imageUrl;
+
+    @Column(name="release_date")
+    private Date releaseDate;
 
     @Column(name="enabled")
     private boolean enabled;
