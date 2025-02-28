@@ -1,4 +1,4 @@
-package com.correajose.cine_plus;
+package com.correajose.cineplus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

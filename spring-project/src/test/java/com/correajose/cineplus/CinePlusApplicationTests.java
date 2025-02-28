@@ -1,4 +1,4 @@
-package com.correajose.cine_plus;
+package com.correajose.cineplus;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
