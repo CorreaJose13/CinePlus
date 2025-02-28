@@ -5,6 +5,7 @@ import com.correajose.cineplus.dtos.customer.CustomerResponseDTO;
 import com.correajose.cineplus.dtos.customer.CustomerUpdateDTO;
 import com.correajose.cineplus.exceptions.customer.EmailAlreadyExistsException;
 import com.correajose.cineplus.models.customer.Customer;
+import com.correajose.cineplus.models.customer.Role;
 import com.correajose.cineplus.repositories.CustomerRepository;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
@@ -54,6 +55,7 @@ public class CustomerService implements ICrudService<CustomerCreateDTO,CustomerU
         Customer customer = modelMapper.map(body, Customer.class);
         customer.setPassword(passwordEncoder.encode(body.getPassword()));
         customer.setEnabled(true);
+        customer.setRole(Role.user);
         return modelMapper.map(customerRepository.save(customer), CustomerResponseDTO.class);
     }
 
@@ -63,13 +65,7 @@ public class CustomerService implements ICrudService<CustomerCreateDTO,CustomerU
         customer.setName(body.getName());
         customer.setLastName(body.getLastName());
         customer.setPhone(body.getPhone());
-        return modelMapper.map(customerRepository.save(customer), CustomerResponseDTO.class);
-    }
-
-    @Transactional
-    public CustomerResponseDTO toggleStatus(int id) {
-        Customer customer = find(id);
-        customer.setEnabled(!customer.isEnabled());
+        customer.setEnabled(body.isEnabled());
         return modelMapper.map(customerRepository.save(customer), CustomerResponseDTO.class);
     }
 
