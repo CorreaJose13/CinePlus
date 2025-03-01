@@ -1,12 +1,15 @@
 package com.correajose.cineplus.models.movie;
 
+import com.correajose.cineplus.models.room.Room;
+import com.correajose.cineplus.models.ticket.Ticket;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,18 +19,23 @@ import java.sql.Time;
 public class MovieFunction {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name="movie_id")
-    private Movie movieId;
+    private Movie movie;
+
+    @ManyToOne
+    @JoinColumn(name="room_id")
+    private Room room;
 
     @Column(name="function_date")
-    private Date functionDate;
+    private LocalDate functionDate;
 
     @Column(name="function_time")
-    private Time functionTime;
+    private LocalTime functionTime;
 
-    @Column(name="price")
-    private Double price;
+    @OneToMany(mappedBy = "function", fetch = FetchType.EAGER)
+    private List<Ticket> tickets;
+
 }

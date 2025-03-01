@@ -65,7 +65,7 @@ public class CustomerService implements ICrudService<CustomerCreateDTO,CustomerU
         customer.setName(body.getName());
         customer.setLastName(body.getLastName());
         customer.setPhone(body.getPhone());
-        customer.setEnabled(body.isEnabled());
+        customer.setEnabled(body.getEnabled());
         return modelMapper.map(customerRepository.save(customer), CustomerResponseDTO.class);
     }
 

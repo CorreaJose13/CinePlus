@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -15,26 +16,24 @@ import java.sql.Date;
 public class Movie {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    @Column(name="title")
     private String title;
 
-    @Column(name="synopsis")
     private String synopsis;
 
-    @Column(name="duration")
     private int duration;
 
-    @Column(name="genre")
     private String genre;
 
     @Column(name="image_url")
     private String imageUrl;
 
     @Column(name="release_date")
-    private Date releaseDate;
+    private LocalDate releaseDate;
 
-    @Column(name="enabled")
-    private boolean enabled;
+    private Boolean enabled;
+
+    @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER)
+    private List<MovieFunction> functions;
 }

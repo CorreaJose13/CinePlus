@@ -59,7 +59,7 @@ public class MovieService implements ICrudService<MovieCreateDTO,MovieUpdateDTO,
         movie.setSynopsis(body.getSynopsis());
         movie.setDuration(body.getDuration());
         movie.setGenre(body.getGenre());
-        movie.setEnabled(body.isEnabled());
+        movie.setEnabled(body.getEnabled());
         return modelMapper.map(movieRepository.save(movie), MovieResponseDTO.class);
     }
 
