@@ -11,10 +11,9 @@ public class ErrorResponse {
     private String description;
     private StackTraceElement[] details;
 
-    public ErrorResponse(boolean ok, int status, String message, StackTraceElement[] details) {
+    public ErrorResponse(boolean ok, int status, String message) {
         this.ok = ok;
         this.error_code = status;
         this.description = message;
-        this.details = details;
     }
 }
