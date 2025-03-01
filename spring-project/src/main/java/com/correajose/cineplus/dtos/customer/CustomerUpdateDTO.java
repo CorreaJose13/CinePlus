@@ -20,5 +20,5 @@ public class CustomerUpdateDTO {
     private String phone;
 
     @NotNull(message = "Enabled cannot be null")
-    private boolean enabled;
+    private Boolean enabled;
 }

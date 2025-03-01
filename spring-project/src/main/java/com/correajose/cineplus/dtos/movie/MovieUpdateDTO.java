@@ -18,13 +18,14 @@ public class MovieUpdateDTO {
     private String synopsis;
 
     @Min(value = 1, message = "Duration must be at least 1 minute")
-    private int duration;
+    private Integer duration;
 
     @NotBlank(message = "Genre cannot be empty")
     private String genre;
 
+    @NotBlank(message = "Image URL cannot be empty")
     private String imageUrl;
 
     @NotNull(message = "Enabled cannot be null")
-    private boolean enabled;
+    private Boolean enabled;
 }

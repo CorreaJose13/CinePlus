@@ -4,18 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class MovieResponseDTO {
-    private int id;
+    private Integer id;
     private String title;
     private String synopsis;
-    private int duration;
+    private Integer duration;
     private String genre;
     private String imageUrl;
-    private Date releaseDate;
-    private boolean enabled;
+    private LocalDate releaseDate;
+    private Boolean enabled;
 }

@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerResponseDTO {
-    private int id;
+    private Integer id;
     private String name;
     private String lastName;
     private String phone;
     private String email;
-    private boolean enabled;
+    private Boolean enabled;
     private Role role;
 }
