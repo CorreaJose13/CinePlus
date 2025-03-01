@@ -35,6 +35,9 @@ public class MovieFunction {
     @Column(name="function_time")
     private LocalTime functionTime;
 
+    @Column(name="available_seats")
+    private String availableSeats;
+
     @OneToMany(mappedBy = "function", fetch = FetchType.EAGER)
     private List<Ticket> tickets;
 

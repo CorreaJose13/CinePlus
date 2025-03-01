@@ -14,9 +14,6 @@ public class RoomCreateDTO {
     @NotNull(message="Room number cannot be null")
     private Integer roomNumber;
 
-    @NotNull(message="Capacity cannot be null")
-    private Integer capacity;
-
     @NotBlank(message="Available seats cannot be blank")
-    private String availableSeats;
+    private String seats;
 }

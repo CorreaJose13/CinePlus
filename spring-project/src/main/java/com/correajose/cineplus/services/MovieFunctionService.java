@@ -72,6 +72,7 @@ public class MovieFunctionService implements ICrudService<MovieFunctionRequestDT
         movieFunction.setRoom(room);
         movieFunction.setFunctionDate(body.getFunctionDate());
         movieFunction.setFunctionTime(body.getFunctionTime());
+        movieFunction.setAvailableSeats(room.getSeats());
         return modelMapper.map(movieFunctionRepository.save(movieFunction), MovieFunctionResponseDTO.class);
     }
 
