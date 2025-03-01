@@ -43,8 +43,8 @@ public class MovieService implements ICrudService<MovieCreateDTO,MovieUpdateDTO,
     }
 
     public MovieResponseDTO create(MovieCreateDTO body) {
-        boolean exists = movieRepository.existsByReleaseDateAndTitle(body.getReleaseDate(), body.getTitle());
-        if (exists) {
+        boolean movieExists = movieRepository.existsByReleaseDateAndTitle(body.getReleaseDate(), body.getTitle());
+        if (movieExists) {
             throw new MovieAlreadyExistsException(body.getReleaseDate(), body.getTitle());
         }
         Movie movie = modelMapper.map(body, Movie.class);
