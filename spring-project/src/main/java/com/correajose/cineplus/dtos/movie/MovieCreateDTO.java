@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -21,7 +21,7 @@ public class MovieCreateDTO {
     private String synopsis;
 
     @Min(value = 1, message = "Duration must be at least 1 minute")
-    private int duration;
+    private Integer duration;
 
     @NotBlank(message = "Genre cannot be empty")
     private String genre;
@@ -29,6 +29,6 @@ public class MovieCreateDTO {
     @NotBlank(message = "Image URL cannot be empty")
     private String imageUrl;
 
-    @NotNull(message = "Release Date cannot be empty")
-    private Date releaseDate;
+    @NotNull(message = "Release date cannot be null")
+    private LocalDate releaseDate;
 }
