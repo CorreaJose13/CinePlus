@@ -11,6 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 import static com.correajose.cineplus.utils.ErrorMessages.notFound;
@@ -20,6 +21,9 @@ public class MovieService implements ICrudService<MovieCreateDTO,MovieUpdateDTO,
 
     @Autowired
     private MovieRepository movieRepository;
+
+    @Autowired
+    private S3FileStorageService s3FileStorageService;
 
     private final ModelMapper modelMapper = new ModelMapper();
 
@@ -47,7 +51,18 @@ public class MovieService implements ICrudService<MovieCreateDTO,MovieUpdateDTO,
         if (movieExists) {
             throw new MovieAlreadyExistsException(body.getReleaseDate(), body.getTitle());
         }
-        Movie movie = modelMapper.map(body, Movie.class);
+        Movie movie = new Movie();
+        movie.setTitle(body.getTitle());
+        movie.setSynopsis(body.getSynopsis());
+        movie.setDuration(body.getDuration());
+        movie.setGenre(body.getGenre());
+        try {
+            String s3URL = s3FileStorageService.uploadFromUrl(body.getImageUrl());
+            movie.setImageUrl(s3URL);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        movie.setReleaseDate(body.getReleaseDate());
         movie.setEnabled(true);
         return modelMapper.map(movieRepository.save(movie), MovieResponseDTO.class);
     }
