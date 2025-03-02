@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS movie_function (
     room_id INT NOT NULL,
     function_date DATE NOT NULL,
     function_time TIME NOT NULL,
+    available_seats TEXT NOT NULL,
     FOREIGN KEY (movie_id) REFERENCES movie(id),
     FOREIGN KEY (room_id) REFERENCES room(id)
 );

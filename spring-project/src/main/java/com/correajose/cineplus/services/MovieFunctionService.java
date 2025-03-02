@@ -2,6 +2,7 @@ package com.correajose.cineplus.services;
 
 import com.correajose.cineplus.dtos.movie.MovieFunctionRequestDTO;
 import com.correajose.cineplus.dtos.movie.MovieFunctionResponseDTO;
+import com.correajose.cineplus.exceptions.movie.MovieFunctionAlreadyExistsException;
 import com.correajose.cineplus.models.movie.Movie;
 import com.correajose.cineplus.models.movie.MovieFunction;
 import com.correajose.cineplus.models.room.Room;
@@ -43,6 +44,7 @@ public class MovieFunctionService implements ICrudService<MovieFunctionRequestDT
     @Transactional
     public MovieFunctionResponseDTO update(int id, MovieFunctionRequestDTO body) {
         MovieFunction movieFunction = find(id);
+        validateMovieFunction(body);
         movieFunction.setFunctionDate(body.getFunctionDate());
         movieFunction.setFunctionTime(body.getFunctionTime());
         return modelMapper.map(movieFunctionRepository.save(movieFunction),MovieFunctionResponseDTO.class);
@@ -64,11 +66,20 @@ public class MovieFunctionService implements ICrudService<MovieFunctionRequestDT
                 .orElseThrow(() -> notFound("movie", "id", body.getMovieId()));
         Room room = roomRepository.findById(body.getRoomId())
                 .orElseThrow(() -> notFound("movie", "id", body.getRoomId()));
+        validateMovieFunction(body);
         MovieFunction movieFunction = new MovieFunction();
         movieFunction.setMovie(movie);
         movieFunction.setRoom(room);
         movieFunction.setFunctionDate(body.getFunctionDate());
         movieFunction.setFunctionTime(body.getFunctionTime());
+        movieFunction.setAvailableSeats(room.getSeats());
         return modelMapper.map(movieFunctionRepository.save(movieFunction), MovieFunctionResponseDTO.class);
+    }
+
+    private void validateMovieFunction(MovieFunctionRequestDTO body){
+        boolean functionExists = movieFunctionRepository.existsByFunctionDateAndFunctionTime(body.getFunctionDate(), body.getFunctionTime());
+        if (functionExists) {
+            throw new MovieFunctionAlreadyExistsException(body.getFunctionDate(), body.getFunctionTime());
+        }
     }
 }

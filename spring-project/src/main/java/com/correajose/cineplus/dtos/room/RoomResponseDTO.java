@@ -11,6 +11,5 @@ public class RoomResponseDTO {
 
     private Integer id;
     private Integer roomNumber;
-    private Integer capacity;
-    private String availableSeats;
+    private String seats;
 }

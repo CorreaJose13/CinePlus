@@ -21,10 +21,7 @@ public class Room {
     @Column(name="room_number")
     private Integer roomNumber;
 
-    private Integer capacity;
-
-    @Column(name="available_seats")
-    private String availableSeats;
+    private String seats;
 
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
     private List<MovieFunction> functions;

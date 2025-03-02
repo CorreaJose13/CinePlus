@@ -18,4 +18,5 @@ public class MovieFunctionResponseDTO {
     private RoomResponseDTO room;
     private LocalDate functionDate;
     private LocalTime functionTime;
+    private String availableSeats;
 }
