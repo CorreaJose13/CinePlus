@@ -39,6 +39,9 @@ public class PurchaseService {
     @Autowired
     private MovieFunctionRepository movieFunctionRepository;
 
+    @Autowired
+    private EmailService emailService;
+
     private final ModelMapper modelMapper = new ModelMapper();
 
     public List<PurchaseResponseDTO> list() {
@@ -92,6 +95,7 @@ public class PurchaseService {
 
             total = total.add(ticketDetail.getPrice());
         }
+        emailService.enviarCorreoConfirmacion("brayan.escobarm@gmail.com","Perro hpta", "lo quiero mucho");
 
         savedPurchase.setTotal(total);
         savedPurchase = purchaseRepository.save(savedPurchase);
