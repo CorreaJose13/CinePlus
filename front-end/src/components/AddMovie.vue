@@ -1,0 +1,3 @@
+<template>
+  Add Movie
+</template>
