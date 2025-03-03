@@ -13,7 +13,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
+    "eslint-plugin-vue-scoped-css": "^2.9.0",
+    "flag-icons": "^7.3.2",
     "pinia": "^3.0.1",
+    "v-phone-input": "^4.4.2",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0",
     "vuetify": "^3.7.14"
@@ -29,7 +33,7 @@
     "eslint-plugin-vue": "^9.32.0",
     "jiti": "^2.4.2",
     "npm-run-all2": "^7.0.2",
-    "prettier": "^3.5.1",
+    "prettier": "^3.5.2",
     "typescript": "~5.7.3",
     "vite": "^6.1.0",
     "vite-plugin-vue-devtools": "^7.7.2",

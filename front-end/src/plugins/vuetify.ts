@@ -6,6 +6,7 @@
 
 // Styles
 import '@mdi/font/css/materialdesignicons.css'
+
 import 'vuetify/styles'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
@@ -29,7 +30,7 @@ export default createVuetify({
     themes: {
       light: {
         colors: {
-          primary: '#01793E', // green
+          primary: '#000000', // black
           secondary: '#CE1227', // red
         },
       },
