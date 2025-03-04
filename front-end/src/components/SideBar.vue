@@ -8,24 +8,9 @@ const items = ref<{ path: string; icon: string; title: string }[]>([
     title: 'Lista de peliculas',
   },
   {
-    path: '/movies/add',
-    icon: 'mdi-movie-plus',
-    title: 'Añadir pelicula',
-  },
-  {
-    path: '/movies/edit',
-    icon: 'mdi-movie-open-edit',
-    title: 'Editar pelicula',
-  },
-  {
     path: '/users',
     icon: 'mdi-account-plus',
     title: 'Lista de usuarios',
-  },
-  {
-    path: '/users/edit',
-    icon: 'mdi-account-edit',
-    title: 'Editar usuario',
   },
   {
     path: '/purchases',
