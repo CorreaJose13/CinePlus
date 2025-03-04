@@ -6,30 +6,53 @@ import AdminView from '@/views/AdminView.vue'
 import ListMovies from '@/components/ListMovies.vue'
 import ListUsers from '@/components/ListUsers.vue'
 import ListPurchases from '@/components/ListPurchases.vue'
-import AddMovie from '@/components/AddMovie.vue'
-import EditMovie from '@/components/EditMovie.vue'
-import EditUser from '@/components/EditUser.vue'
+import BillBoardView from '@/views/BillBoardView.vue'
+import MovieFunction from '@/components/MovieFunction.vue'
+import MoviePurchase from '@/components/MoviePurchase.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/home',
+      path: '/',
       name: 'home',
+      redirect: 'billboard',
       component: HomeView,
       children: [
         {
-          path: '/login',
+          path: '',
+          name: 'billboard',
+          component: BillBoardView,
+        },
+        {
+          path: 'movie',
+          name: 'movieDetail',
+          redirect: 'function',
+          children: [
+            {
+              path: '/function',
+              name: 'movieFunction',
+              component: MovieFunction,
+            },
+            {
+              path: '/purchase',
+              name: 'moviePurchase',
+              component: MoviePurchase,
+            },
+          ],
+        },
+        {
+          path: 'login',
           name: 'login',
           component: LoginView,
         },
         {
-          path: '/register',
+          path: 'register',
           name: 'register',
           component: RegisterView,
         },
         {
-          path: '/admin',
+          path: 'admin',
           name: 'admin',
           component: AdminView,
           children: [
@@ -39,24 +62,9 @@ const router = createRouter({
               component: ListMovies,
             },
             {
-              path: '/movies/add',
-              name: 'add movie',
-              component: AddMovie,
-            },
-            {
-              path: '/movies/edit',
-              name: 'edit movie',
-              component: EditMovie,
-            },
-            {
               path: '/users',
               name: 'users',
               component: ListUsers,
-            },
-            {
-              path: '/users/edit',
-              name: 'edit user',
-              component: EditUser,
             },
             {
               path: '/purchases',
@@ -70,7 +78,7 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       name: 'redirect',
-      redirect: '/home',
+      redirect: 'billboard',
     },
   ],
 })
